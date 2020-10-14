@@ -14,6 +14,7 @@ module.exports = function(app) {
             losses: req.body.losses,
             user_id: req.body.user_id
         }).then(function(newCharacter) {
+            // Returns the new character as json
             res.json(newCharacter);
         });
     });
