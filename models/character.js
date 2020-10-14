@@ -10,11 +10,12 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
         },
         wins: { 
-            type: DataTypes.INT,
+            type: DataTypes.NUMBER,
         },
         losses: { 
-            type: DataTypes.INT,
+            type: DataTypes.NUMBER,
         }
-    });
+    }, {timestamps: false}
+    );
     return Character;
 };
