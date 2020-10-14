@@ -1,3 +1,4 @@
+// Module Requirements
 const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
@@ -9,9 +10,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+// Handlebars setup
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// Routes Links
+// ==========================================
+require("./routes/html-routes.js")(app);
+// require("./routes/api-routes.js")(app);
+
+// Testing route, to be changed later
 app.get("/api/config", (req, res) => {
   res.json({
     success: true,
