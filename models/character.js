@@ -1,5 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
+    // Define character
     const Character = sequelize.define("Character", {
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4
+        },
         character_name: {
             type: DataTypes.STRING,
         },
@@ -24,7 +30,18 @@ module.exports = function (sequelize, DataTypes) {
         def: { 
             type: DataTypes.NUMBER,
         }
-    }, {timestamps: false}
+    }, {
+        timestamps: false,
+        underscored: true
+    }
     );
+
+    Character.associate = function (models) {
+        Character.belongsTo(models.User, {
+          through: "UserCharacters",
+          foreignKey: "user_id",
+        });
+    };
+
     return Character;
 };

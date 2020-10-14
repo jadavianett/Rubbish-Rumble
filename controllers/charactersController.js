@@ -8,6 +8,8 @@ const db = require("../models");
 
 // API ROUTES
 // ======================================================
+
+// adds a new character based on inputted req.body
 router.post("/api/addCharacter", function(req,res) {
     // Creates a new character based on the incoming request
     db.Character.create({
@@ -21,7 +23,6 @@ router.post("/api/addCharacter", function(req,res) {
         def: req.body.def
     }).then(function(newCharacter) {
         // Returns the new character as json
-        console.log(newCharacter);
         res.json(newCharacter);
     }).catch((err) => {
         console.log(err);
@@ -30,6 +31,18 @@ router.post("/api/addCharacter", function(req,res) {
             data: null,
             message: "Unable to create character",
         });
+    });
+});
+
+// gets all characters belonging to a certain user id for viewing
+router.get("/api/viewCharacters/:id", function(req,res) {
+    db.Character.findAll({
+        where: {
+            user_id: req.params.id
+        }
+    }).then(matchedCharacters => {
+        console.log("Found your characters")
+        res.json(matchedCharacters);
     });
 });
 
