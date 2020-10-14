@@ -15,5 +15,8 @@ CREATE TABLE IF NOT EXISTS characters (
     avatar_image VARCHAR(255),
     wins INT,
     losses INT,
+    hp INT,
+    atk INT,
+    def INT,
     user_id INT
 );

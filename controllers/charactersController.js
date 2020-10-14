@@ -15,7 +15,10 @@ router.post("/api/addCharacter", function(req,res) {
         advantage: req.body.advantage,
         avatar_image: req.body.avatar_image,
         wins: req.body.wins,
-        losses: req.body.losses
+        losses: req.body.losses,
+        hp: req.body.hp,
+        atk: req.body.atk,
+        def: req.body.def
     }).then(function(newCharacter) {
         // Returns the new character as json
         console.log(newCharacter);
