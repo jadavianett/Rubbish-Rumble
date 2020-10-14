@@ -1,3 +1,30 @@
 h1 {
-    color: green
+  text-align: center;
+  color: black;
+}
+
+.container {
+  align-items: center;
+  /* display: flex; */
+  justify-content: center;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h6 {
+  text-align: center;
+  color: black;
+}
+
+form {
+  display: flex;
+  justify-content: center;
 }
