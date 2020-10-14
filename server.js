@@ -4,6 +4,8 @@ const app = express();
 const exphbs = require("express-handlebars");
 const handlebars = require("handlebars");
 const db = require("./models")
+const userController = require("./controllers/userController");
+const charactersController = require("./controllers/charactersController");
 const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
@@ -14,11 +16,17 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Routes Links
-// ==========================================
-require("./routes/html-routes.js")(app);
-// require("./routes/api-routes.js")(app);
+// HTML ROUTES
+// ============================================
+// Main page route
+app.get("/", (req, res) => {
+  res.render("index");
+});
+app.use(userController);
+app.use(charactersController);
 
+// API ROUTES
+// ======================================
 // Testing route, to be changed later
 app.get("/api/config", (req, res) => {
   res.json({
@@ -26,12 +34,8 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
-db.sequelize.sync().then(function () {
+//db.sequelize.sync().then(function () {
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
   });
-});
+//});
