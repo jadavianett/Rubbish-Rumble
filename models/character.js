@@ -14,6 +14,15 @@ module.exports = function (sequelize, DataTypes) {
         },
         losses: { 
             type: DataTypes.NUMBER,
+        },
+        hp: { 
+            type: DataTypes.NUMBER,
+        },
+        atk: { 
+            type: DataTypes.NUMBER,
+        },
+        def: { 
+            type: DataTypes.NUMBER,
         }
     }, {timestamps: false}
     );
