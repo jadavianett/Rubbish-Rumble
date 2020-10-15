@@ -1,14 +1,48 @@
+// Makes a search for the user and creates one if no such user exists
+function getUserByName(newUser) {
+  $.ajax("/api/userByName/" + newUser.user_name, {
+    type: "GET",
+  }).then(function (response) {
+    console.log(response)
+    if (response === null) {
+      createNewUser(newUser);
+    } else {
+      // change to character creator
+      console.log("Found User: " + response);
+      window.location.replace("/createCharacter");
+    }
+  });
+};
+
+// Creates a new user based on given name
+function createNewUser(userObj) {
+  $.ajax("/api/user", {
+    type: "POST",
+    data: userObj,
+  }).then(function(response) {
+    // Change to character creator
+    console.log("Added new User: " + response);
+    window.location.replace("/createCharacter");
+  });
+};
+
+// when submit is clicked, select or create a 'currentUser'
 $("#usernameInput").on("submit", function (event) {
   event.preventDefault();
-  window.location.replace("/createCharacter");
+
+  // Returns automatically if no value was input
+  if ($("#usernameInput [name=user_name]").val() == "") {
+    console.log("returning due to empty field");
+    return;
+  };
+
+  // Creates an object out of the given name for use in api calls
   var newUser = {
     user_name: $("#usernameInput [name=user_name]").val().trim(),
   };
+
   console.log(newUser);
-  //   $.ajax("/api/users", {
-  //     type: "POST",
-  //     data: newUser,
-  //   }).then(function () {
-  //     console.log("created new user");
-  //   });
+
+  // Makes a search for the user and creates one if no such user exists
+  getUserByName(newUser);
 });
