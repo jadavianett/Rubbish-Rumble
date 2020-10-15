@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Hardbut99?",
+    "password": "jada1998",
     "database": "choose_your_fighter_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Hardbut99?",
+    "password": "jada1998",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
