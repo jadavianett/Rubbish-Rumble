@@ -28,3 +28,20 @@ form {
   display: flex;
   justify-content: center;
 }
+
+.btn-large {
+  /* padding: 5%; */
+}
+
+.btn {
+  color: black;
+}
+
+#view-all-characters {
+  margin-right: 425px;
+  /* background-color: blueviolet; */
+}
+
+#add-new-character {
+
+}
