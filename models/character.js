@@ -1,11 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     // Define character
     const Character = sequelize.define("Character", {
-        id: {
-            type: DataTypes.UUID,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4
-        },
+        // id: {
+        //     type: DataTypes.UUID,
+        //     primaryKey: true,
+        //     defaultValue: DataTypes.UUIDV4
+        // },
         character_name: {
             type: DataTypes.STRING,
         },
@@ -16,19 +16,19 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
         },
         wins: { 
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
         },
         losses: { 
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
         },
         hp: { 
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
         },
         atk: { 
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
         },
         def: { 
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
         }
     }, {
         timestamps: false,

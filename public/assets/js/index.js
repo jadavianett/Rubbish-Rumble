@@ -1,15 +1,14 @@
-const userController = require("../../../controllers/userController.js");
-
 // Makes a search for the user and creates one if no such user exists
-function getUserByName() {
-  $.ajax("/api/userByName", {
+function getUserByName(newUser) {
+  $.ajax("/api/userByName/" + newUser.user_name, {
     type: "GET",
-    data: newUser,
   }).then(function (response) {
+    console.log(response)
     if (response === null) {
       createNewUser(newUser);
     } else {
       // change to character creator
+      console.log("Found User: " + response);
       window.location.replace("/createCharacter");
     }
   });
@@ -21,9 +20,8 @@ function createNewUser(userObj) {
     type: "POST",
     data: userObj,
   }).then(function(response) {
-    // Sets current user to the newly created user
-    userController.currentUser = response;
     // Change to character creator
+    console.log("Added new User: " + response);
     window.location.replace("/createCharacter");
   });
 };
@@ -33,7 +31,8 @@ $("#usernameInput").on("submit", function (event) {
   event.preventDefault();
 
   // Returns automatically if no value was input
-  if ($("#usernameInput").val() == "") {
+  if ($("#usernameInput [name=user_name]").val() == "") {
+    console.log("returning due to empty field");
     return;
   };
 
@@ -45,5 +44,5 @@ $("#usernameInput").on("submit", function (event) {
   console.log(newUser);
 
   // Makes a search for the user and creates one if no such user exists
-  getUserByName();
+  getUserByName(newUser);
 });

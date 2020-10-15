@@ -2,9 +2,15 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
+//currentUser variable for storing the user who is currently 'logged in'
+var currentUser;
+
 // Views Routes
 // ======================================================
-
+router.get("/createCharacter", (req, res) => {
+    console.log({currentUser});
+    res.render("createCharacter", {currentUser});
+});
 
 // API ROUTES
 // ======================================================
@@ -14,6 +20,8 @@ router.post("/api/user", function(req,res) {
     db.User.create({
         user_name: req.body.user_name
     }).then(function(newUser) {
+        //Updates currentuser and responds with the new user
+        currentUser = newUser;
         res.json(newUser);
     }).catch((err) => {
         console.log(err);
@@ -26,7 +34,6 @@ router.post("/api/user", function(req,res) {
 });
 
 // Sets the current user value to the selected user for use in other files
-var currentUser;
 router.get("/api/user/:id", function(req,res) {
     db.User.findOne({
         where: {
@@ -53,8 +60,9 @@ router.get("/api/userByName/:name", function(req,res) {
             user_name: req.params.name
         }
     }).then(function(foundUser) {
-        res.json(foundUser);
         currentUser = foundUser;
+        res.json(foundUser);
+        // res.render("createCharacter", {currentUser: foundUser});
     }).catch((err) => {
         console.log(err);
         res.status(500).json({
