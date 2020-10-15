@@ -5,6 +5,7 @@ const exphbs = require("express-handlebars");
 const handlebars = require("handlebars");
 const db = require("./models");
 const {router: userRouter} = require("./controllers/userController");
+var {currentUser} = require("./controllers/userController");
 const charactersController = require("./controllers/charactersController");
 const PORT = process.env.PORT || 8080;
 
@@ -25,12 +26,17 @@ app.get("/", (req, res) => {
 app.use(userRouter);
 app.use(charactersController);
 
-app.get("/createCharacter", (req, res) => {
-  res.render("createCharacter");
-});
+// app.get("/createCharacter", (req, res) => {
+//   console.log({currentUser});
+//   res.render("createCharacter", {currentUser});
+// });
 
 app.get("/allCharacters", (req, res) => {
   res.render("allCharacters");
+});
+
+app.get("/battle", (req, res) => {
+  res.render("battle");
 });
 
 // API ROUTES
@@ -42,8 +48,8 @@ app.get("/api/config", (req, res) => {
   });
 });
 
-//db.sequelize.sync().then(function () {
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+db.sequelize.sync({}).then(function () {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
 });
-//});
