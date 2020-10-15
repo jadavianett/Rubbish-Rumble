@@ -28,3 +28,7 @@ form {
   display: flex;
   justify-content: center;
 }
+
+.carousel .carousel-item {
+  height: 300px;
+}
