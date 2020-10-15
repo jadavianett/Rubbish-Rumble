@@ -43,8 +43,64 @@ form {
 }
 
 #add-new-character {
-
 }
 .carousel .carousel-item {
   height: 300px;
+}
+
+#compCharacter {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: hue-rotate(180deg);
+  margin: auto;
+}
+
+#userCharacter {
+  margin: auto;
+}
+
+#compHPbar {
+  background-color: red;
+  height: 25px;
+}
+
+#playerHPbar {
+  background: green;
+  height: 25px;
+}
+
+.characterCol {
+  display: grid;
+}
+
+.actionBtns {
+  display: flex;
+}
+
+#attackBtn {
+  background-color: red;
+  width: 50%;
+  margin: 5px;
+  color: white;
+}
+
+#defendBtn {
+  background-color: blue;
+  width: 50%;
+  margin: 5px;
+  color: white;
+}
+
+#strikeBtn {
+  background-color: purple;
+  width: 50%;
+  margin: 5px;
+  color: white;
+}
+
+#counterBtn {
+  background-color: orangered;
+  width: 50%;
+  margin: 5px;
+  color: white;
 }
