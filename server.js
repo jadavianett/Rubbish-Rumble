@@ -4,7 +4,7 @@ const app = express();
 const exphbs = require("express-handlebars");
 const handlebars = require("handlebars");
 const db = require("./models");
-const userController = require("./controllers/userController");
+const {router: userRouter} = require("./controllers/userController");
 const charactersController = require("./controllers/charactersController");
 const PORT = process.env.PORT || 8080;
 
@@ -22,7 +22,7 @@ app.set("view engine", "handlebars");
 app.get("/", (req, res) => {
   res.render("index");
 });
-app.use(userController);
+app.use(userRouter);
 app.use(charactersController);
 
 app.get("/createCharacter", (req, res) => {
