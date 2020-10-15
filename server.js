@@ -33,6 +33,10 @@ app.get("/allCharacters", (req, res) => {
   res.render("allCharacters");
 });
 
+app.get("/battle", (req, res) => {
+  res.render("battle");
+});
+
 // API ROUTES
 // ======================================
 // Testing route, to be changed later
