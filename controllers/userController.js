@@ -45,5 +45,7 @@ router.get("/api/user/:id", function(req,res) {
     });
 });
 
-module.exports = router;
-module.exports = currentUser;
+module.exports = {
+    router: router,
+    currentUser: currentUser
+};
