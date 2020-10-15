@@ -45,6 +45,26 @@ router.get("/api/user/:id", function(req,res) {
     });
 });
 
+// Sets the current user value to the selected user for use in other files
+var currentUser;
+router.get("/api/userByName/:name", function(req,res) {
+    db.User.findOne({
+        where: {
+            user_name: req.params.name
+        }
+    }).then(function(foundUser) {
+        res.json(foundUser);
+        currentUser = foundUser;
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            error: true,
+            data: null,
+            message: "Unable to find user"
+        });
+    });
+});
+
 module.exports = {
     router: router,
     currentUser: currentUser
