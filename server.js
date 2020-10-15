@@ -29,6 +29,10 @@ app.get("/createCharacter", (req, res) => {
   res.render("createCharacter");
 });
 
+app.get("/allCharacters", (req, res) => {
+  res.render("allCharacters");
+});
+
 // API ROUTES
 // ======================================
 // Testing route, to be changed later

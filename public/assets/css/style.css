@@ -45,3 +45,6 @@ form {
 #add-new-character {
 
 }
+.carousel .carousel-item {
+  height: 300px;
+}
