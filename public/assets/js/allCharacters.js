@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $("#go-battle").click(function () {
-    alert("need to call battle page");
+    window.location.replace("/battle");
   });
   $(".carousel").carousel();
 
