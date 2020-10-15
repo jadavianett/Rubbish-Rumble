@@ -10,16 +10,17 @@ $(document).ready(function(){
       console.log(newCharacter);
       //save character information 
       // re route to the view all characters page
+      window.location.replace("/allCharacters");
     
         })
     
     $("#add-new-character").click(function (event) {
       console.log("The add new character button was clicked");
-      // save character information 
-      // let newCharacter = {
-      //   name: $("#character-name [name=character-name-form]").val().trim(),
-      // };
-      // console.log(newCharacter);
+      let newCharacter = {
+        character_name: $("#character-name-form [name=name]").val().trim(),
+        advantage: $("#advantage-chosen [name=advantage]:checked").val(),
+      };
+      console.log(newCharacter);
       //refresh the page 
       location.reload();
     })
