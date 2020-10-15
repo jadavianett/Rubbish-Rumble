@@ -29,6 +29,22 @@ form {
   justify-content: center;
 }
 
+.btn-large {
+  /* padding: 5%; */
+}
+
+.btn {
+  color: black;
+}
+
+#view-all-characters {
+  margin-right: 425px;
+  /* background-color: blueviolet; */
+}
+
+#add-new-character {
+
+}
 .carousel .carousel-item {
   height: 300px;
 }
