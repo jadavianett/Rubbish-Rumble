@@ -1,6 +1,6 @@
 h1 {
   text-align: center;
-  color: rgb(86, 192, 253);
+  color: #56c0fd;
   font-family: 'VT323', monospace;
   font-size: 128px;
   text-shadow: 5px 5px 5px #000000
@@ -17,17 +17,10 @@ body {
   align-items: center;
   min-height: 100vh;
   background-image: url(../images/background\ -2.jpg);
-    background-size: cover;
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
-  
-  
-}
-
-img {
-  opacity: 0.5;
 }
 
 main {
@@ -40,7 +33,6 @@ h6 {
   font-family: 'VT323', monospace;
   font-size: 45px;
   text-shadow: 5px 5px 5px #000000
-
 }
 
 form {
