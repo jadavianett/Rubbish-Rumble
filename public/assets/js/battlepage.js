@@ -18,6 +18,8 @@ $(document).ready(function () {
         console.log(response)
         playerCharacter = response;
         playerCharacter.currentHP = playerCharacter.hp;
+        $("#player-character-name").text(playerCharacter.character_name);
+        $("#userCharacter").attr("src", playerCharacter.avatar_image);
         callEnemy();
     });
 
@@ -28,12 +30,13 @@ $(document).ready(function () {
             console.log(response)
             enemyCharacter = response;
             enemyCharacter.currentHP = enemyCharacter.hp;
+            $("#enemy-character-name").text(enemyCharacter.character_name);
+            $("#compCharacter").attr("src", enemyCharacter.avatar_image);
             if (response) {battleSystem()}
         });
     };
     
 
-    // While loop continues until one hp drops below zero
     // Causes turns of battle to repeat until one combatant loses
     // ==============================================================================
     function battleSystem() {
