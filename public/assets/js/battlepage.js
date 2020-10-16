@@ -131,7 +131,7 @@ $(document).ready(function () {
                 // If the enemy struck...
                     // AND the player defended
                 if (enemyAction === "strike" && currentAction === "defendBtn") {
-                    incomingDamage = enemyCharacter.atk - playerCharacter.def;
+                    incomingDamage = (enemyCharacter.atk * 1.5) - playerCharacter.def;
                     // Incoming damage is reduced but not past 0
                     if (incomingDamage < 0) {incomingDamage = 0};
                     // Player takes the reduced damage
@@ -190,15 +190,15 @@ $(document).ready(function () {
                 enemyAction = "";
     
                 // Updates the HP bars of both characters
-                $("#playerHPbar").text(`${playerCharacter.currentHP} / ${playerCharacter.hp}`);
-                $("#playerHPbar").width((playerCharacter.currentHP / playerCharacter.hp) * 100);
-                $("#compHPbar").width((enemyCharacter.currentHP / enemyCharacter.hp) * 100);
-                $("#compHPbar").text(`${enemyCharacter.currentHP} / ${enemyCharacter.hp}`);
+                $("#playerHPbar").width(((playerCharacter.currentHP / playerCharacter.hp) * 100) + "%");
+                //$("#playerHPbar").text(`${playerCharacter.currentHP} / ${playerCharacter.hp}`);
+                $("#compHPbar").width(((enemyCharacter.currentHP / enemyCharacter.hp) * 100) + "%");
+                //$("#compHPbar").text(`${enemyCharacter.currentHP} / ${enemyCharacter.hp}`);
             });
     
         };
     }
 
-    $("#battle-header").text("The Battle is over!");
+    // $("#battle-header").text("The Battle is over!");
 
 });
