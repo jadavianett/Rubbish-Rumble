@@ -38,23 +38,40 @@ router.post("/api/character", function (req, res) {
 });
 
 // gets all characters belonging to a certain user id for viewing
-router.get("/api/character/:id", function (req, res) {
-  db.Character.findAll({
-    where: {
-      user_id: req.params.id,
-    },
-  })
-    .then((matchedCharacters) => {
-      console.log("Found your characters");
-      res.json(matchedCharacters);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: true,
-        data: null,
-        message: "Unable to find characters",
-      });
+router.get("/api/characterByUser/:id", function(req,res) {
+    db.Character.findAll({
+        where: {
+            user_id: req.params.id
+        }
+    }).then(matchedCharacters => {
+        console.log("Found your characters")
+        res.json(matchedCharacters);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            error: true,
+            data: null,
+            message: "Unable to find characters",
+        });
+    });
+});
+
+// gets a character with a certain id
+router.get("/api/character/:id", function(req,res) {
+    db.Character.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(matchedCharacter => {
+        console.log("Found your character")
+        res.json(matchedCharacter);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            error: true,
+            data: null,
+            message: "Unable to find character",
+        });
     });
 });
 
