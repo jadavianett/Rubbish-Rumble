@@ -36,8 +36,12 @@ h6 {
 }
 
 form {
+  color:white;
   display: flex;
   justify-content: center;
+}
+button {
+  z-index: -10;
 }
 
 #usernameInput {
@@ -64,6 +68,18 @@ form {
   height: 240px;
   background-color: transparent;
   font-weight: bold;
+}
+button {
+  position: absolute;
+  top: -50px;
+}
+.card-content {
+  color: white !important;
+  text-shadow: 5px 5px 5px #000000;
+}
+
+label {
+  color: white !important;
 }
 
 #compCharacter {
@@ -132,6 +148,7 @@ form {
 }
 
 #character_name {
+  color: white;
   text-align: center;
   font-size: 15pt;
 }
