@@ -123,7 +123,22 @@ form {
   color: white;
 }
 
+<<<<<<< HEAD
 /* .row .col.s4 {
   width: 0% !important;
   margin: auto;
 } */
+=======
+#character-name-form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #00000069;
+  width: 400px;
+}
+
+#character_name {
+  text-align: center;
+  font-size: 15pt;
+}
+>>>>>>> 3a437885a81a07c18a5de87ef5d2d83a2ed4ef81
