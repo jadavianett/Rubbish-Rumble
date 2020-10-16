@@ -1,9 +1,9 @@
 h1 {
   text-align: center;
   color: #56c0fd;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 128px;
-  text-shadow: 5px 5px 5px #000000
+  text-shadow: 5px 5px 5px #000000;
 }
 
 .container {
@@ -30,9 +30,9 @@ main {
 h6 {
   text-align: center;
   color: white;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 45px;
-  text-shadow: 5px 5px 5px #000000
+  text-shadow: 5px 5px 5px #000000;
 }
 
 form {
@@ -41,8 +41,8 @@ form {
 }
 
 #usernameInput {
-background-color: #0000006f;
-align-items: center;
+  background-color: #0000006f;
+  align-items: center;
 }
 
 .btn-large {

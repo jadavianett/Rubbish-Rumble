@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "root",
-    "password": "Manzanita19",
+    "password": "Pass2020",
     "database": "choose_your_fighter_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Manzanita19",
+    "password": "Pass2020",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "Manzanita19?",
+    "password": "Pass2020",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
