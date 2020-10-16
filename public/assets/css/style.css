@@ -1,17 +1,15 @@
 h1 {
   text-align: center;
-  color: #56c0fd;
+  color: #56C0FD;
   font-family: "VT323", monospace;
   font-size: 128px;
   text-shadow: 5px 5px 5px #000000;
 }
-
 .container {
   align-items: center;
   /* display: flex; */
   justify-content: center;
 }
-
 body {
   display: flex;
   align-items: center;
@@ -22,11 +20,9 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
 main {
   flex: 1 0 auto;
 }
-
 h6 {
   text-align: center;
   color: white;
@@ -34,117 +30,89 @@ h6 {
   font-size: 45px;
   text-shadow: 5px 5px 5px #000000;
 }
-
 form {
   color:white;
   display: flex;
   justify-content: center;
 }
-button {
-  z-index: -10;
-}
-
 #usernameInput {
   background-color: #0000006f;
   align-items: center;
 }
-
 .btn-large {
   /* padding: 5%; */
 }
-
 .btn {
   color: black;
 }
-
 #view-all-characters {
   margin-right: 425px;
+  top: -50px;
   /* background-color: blueviolet; */
 }
-
 #add-new-character {
+  top: -50px;
 }
 .carousel .carousel-item {
   height: 240px;
   background-color: transparent;
   font-weight: bold;
 }
-button {
-  position: absolute;
-  top: -50px;
-}
+
 .card-content {
   color: white !important;
   text-shadow: 5px 5px 5px #000000;
 }
-
 label {
   color: white !important;
 }
-
 #compCharacter {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   filter: hue-rotate(180deg);
   margin: auto;
 }
-
 #userCharacter {
   margin: auto;
 }
-
 #compHPbar {
   background-color: red;
   height: 25px;
 }
-
 #playerHPbar {
   background: green;
   height: 25px;
 }
-
 .characterCol {
   display: grid;
 }
-
 .actionBtns {
   display: flex;
 }
-
 #attackBtn {
   background-color: red;
   width: 50%;
   margin: 5px;
   color: white;
 }
-
 #defendBtn {
   background-color: blue;
   width: 50%;
   margin: 5px;
   color: white;
 }
-
 #strikeBtn {
   background-color: purple;
   width: 50%;
   margin: 5px;
   color: white;
 }
-
 #counterBtn {
   background-color: orangered;
   width: 50%;
   margin: 5px;
   color: white;
 }
-
-<<<<<<< HEAD
-/* .row .col.s4 {
-  width: 0% !important;
-  margin: auto;
-} */
-=======
 #character-name-form {
   display: block;
   margin-left: auto;
@@ -152,10 +120,8 @@ label {
   background-color: #00000069;
   width: 400px;
 }
-
 #character_name {
   color: white;
   text-align: center;
   font-size: 15pt;
 }
->>>>>>> 3a437885a81a07c18a5de87ef5d2d83a2ed4ef81
