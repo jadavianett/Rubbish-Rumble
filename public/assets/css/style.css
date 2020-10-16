@@ -122,3 +122,16 @@ form {
   margin: 5px;
   color: white;
 }
+
+#character-name-form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #00000069;
+  width: 400px;
+}
+
+#character_name {
+  text-align: center;
+  font-size: 15pt;
+}
