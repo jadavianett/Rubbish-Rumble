@@ -22,7 +22,9 @@ $(document).ready(function () {
   // need to figure out how to trim it
   $(document).on("click", ".avatar-select img", function () {
     console.log(`You clicked on ${this.id}`);
-    avatarImage.push(`${this.src}`), console.log(avatarImage[0]);
+    avatarImage.push(`${$(this).attr("data-src")}`),
+      console.log(avatarImage[0]);
+    console.log($(this).attr("data-src"));
   });
 
   // click listener for creating new characters
@@ -36,13 +38,11 @@ $(document).ready(function () {
       avatar_image: avatarImage[0],
       wins: 0,
       losses: 0,
+      user_id: sessionStorage.getItem("currentUser"),
     };
-
     // runs create new character
-
     createNewCharacter(newCharacter);
     console.log(newCharacter);
-
     //refresh the page
     // location.reload();
   });
