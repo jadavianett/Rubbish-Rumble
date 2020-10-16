@@ -17,7 +17,7 @@ $(document).ready(function () {
     }).then(function (response) {
         console.log(response)
         playerCharacter = response;
-        playerCharacter.currentHP = response.hp;
+        playerCharacter.currentHP = playerCharacter.hp;
     });
 
     $.ajax("/api/character/6", {
@@ -25,7 +25,7 @@ $(document).ready(function () {
     }).then(function (response) {
         console.log(response)
         enemyCharacter = response;
-        enemyCharacter.currentHP = response.hp;
+        enemyCharacter.currentHP = enemyCharacter.hp;
     });
 
     // While loop continues until one hp drops below zero
@@ -177,7 +177,18 @@ $(document).ready(function () {
             //     $("#battle-header").text(`${playerResult}`);
             // };
 
+            // Erase the results for the next turn of battle
+            playerResult = "";
+            enemyResult = "";
+
+            // Updates the HP bars of both characters
+            $("#playerHPbar").width((playerCharacter.currentHP / playerCharacter.hp) * 100);
+            $("#compHPbar").width((enemyCharacter.currentHP / enemyCharacter.hp) * 100);
+
         });
+
     };
+
+    $("#battle-header").text("The Battle is over!");
 
 });
