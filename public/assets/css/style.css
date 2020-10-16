@@ -1,9 +1,9 @@
 h1 {
   text-align: center;
   color: rgb(86, 192, 253);
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 128px;
-  text-shadow: 5px 5px 5px #000000
+  text-shadow: 5px 5px 5px #000000;
 }
 
 .container {
@@ -16,18 +16,11 @@ body {
   display: flex;
   align-items: center;
   min-height: 100vh;
-  background-image: url(../images/background\ -2.jpg);
-    background-size: cover;
+  background-image: url(../images/background-2.jpg);
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
-  
-  
-}
-
-img {
-  opacity: 0.5;
 }
 
 main {
@@ -37,10 +30,9 @@ main {
 h6 {
   text-align: center;
   color: white;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 45px;
-  text-shadow: 5px 5px 5px #000000
-
+  text-shadow: 5px 5px 5px #000000;
 }
 
 form {
