@@ -5,7 +5,7 @@ const { currentUser } = require("./userController.js");
 
 // Views Routes
 // ======================================================
-
+let matchedCharacters;
 // API ROUTES
 // ======================================================
 
@@ -25,6 +25,7 @@ router.post("/api/character", function (req, res) {
   })
     .then(function (newCharacter) {
       // Returns the new character as json
+      matchedCharacters = newCharacter;
       res.json(newCharacter);
     })
     .catch((err) => {
@@ -37,15 +38,15 @@ router.post("/api/character", function (req, res) {
     });
 });
 
-// gets all characters belonging to a certain user id for viewing
-router.get("/api/character/:id", function (req, res) {
+router.get("/api/characterByUser/:user_id", function (req, res) {
   db.Character.findAll({
     where: {
-      user_id: req.params.id,
+      user_id: req.params.user_id,
     },
   })
     .then((matchedCharacters) => {
       console.log("Found your characters");
+      console.log(matchedCharacters);
       res.json(matchedCharacters);
     })
     .catch((err) => {
@@ -56,6 +57,27 @@ router.get("/api/character/:id", function (req, res) {
         message: "Unable to find characters",
       });
     });
+});
+
+// gets all characters belonging to a certain user id for viewing
+router.get("/api/character/:id", function (req, res) {
+  db.Character.findOne({
+    where: {
+      id: req.params.id,
+    },
+  }).then((matchedCharacter) => {
+    console.log("Found your character");
+    console.log(matchedCharacter);
+    res.json(matchedCharacter);
+  });
+  // .catch((err) => {
+  //   console.log(err);
+  //   res.status(500).json({
+  //     error: true,
+  //     data: null,
+  //     message: "Unable to find character",
+  //   });
+  // });
 });
 
 // deletes a chracter that has a certain id
@@ -81,7 +103,7 @@ router.delete("/api/character/:id", function (req, res) {
 
 // updates a character with a certain id
 router.put("/api/character/:id", function (req, res) {
-  db.Character.findOner({
+  db.Character.findOne({
     where: {
       id: req.params.id,
     },
@@ -98,4 +120,8 @@ router.put("/api/character/:id", function (req, res) {
   });
 });
 
-module.exports = router;
+// module.exports = router;
+module.exports = {
+  router: router,
+  matchedCharacters: matchedCharacters,
+};
