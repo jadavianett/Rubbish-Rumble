@@ -45,10 +45,6 @@ form {
   align-items: center;
 }
 
-.btn-large {
-  /* padding: 5%; */
-}
-
 .btn {
   color: black;
 }
@@ -58,8 +54,6 @@ form {
   /* background-color: blueviolet; */
 }
 
-#add-new-character {
-}
 .carousel .carousel-item {
   height: 240px;
   background-color: transparent;
@@ -123,12 +117,6 @@ form {
   color: white;
 }
 
-<<<<<<< HEAD
-/* .row .col.s4 {
-  width: 0% !important;
-  margin: auto;
-} */
-=======
 #character-name-form {
   display: block;
   margin-left: auto;
@@ -141,4 +129,3 @@ form {
   text-align: center;
   font-size: 15pt;
 }
->>>>>>> 3a437885a81a07c18a5de87ef5d2d83a2ed4ef81
