@@ -20,15 +20,15 @@ $(document).ready(function () {
     alert("You selected Fox");
   });
 
-  function usersCharacters(characterList) {
+  function usersCharacters() {
     $.ajax("/api/characterByUser/1", {
       type: "GET",
-      data: characterList,
     }).then(function (response) {
       console.log(response);
-      // Change to character creator
-      console.log("generated characters for user id" + response);
-      console.log(characterList);
+      let characterNames = response.map(function (value) {
+        return value.character_name;
+      });
+      console.log(characterNames);
     });
   }
   usersCharacters();
