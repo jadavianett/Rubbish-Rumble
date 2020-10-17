@@ -5,12 +5,15 @@ const exphbs = require("express-handlebars");
 const handlebars = require("handlebars");
 const db = require("./models");
 const { router: userRouter } = require("./controllers/userController");
-const { matchedCharacters } = require("./controllers/charactersController");
+const {
+  matchedCharacters: matchedCharacters,
+} = require("./controllers/charactersController");
 const {
   router: charactersRouter,
 } = require("./controllers/charactersController");
-var { currentUser } = require("./controllers/userController");
-const charactersController = require("./controllers/charactersController");
+const {
+  allowInsecurePrototypeAccess,
+} = require("@handlebars/allow-prototype-access");
 const PORT = process.env.PORT || 8080;
 
 app.use(express.static("public"));
@@ -18,7 +21,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Handlebars setup
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine(
+  "handlebars",
+  exphbs({
+    defaultLayout: "main",
+    handlebars: allowInsecurePrototypeAccess(handlebars),
+  })
+);
 app.set("view engine", "handlebars");
 
 // HTML ROUTES
