@@ -1,25 +1,21 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "Pass2020",
-=======
-    "password": "Hardbut99?",
->>>>>>> db5cf8d9ed6e05560746df6afd7842d1d71e3fcd
     "database": "choose_your_fighter_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Hardbut99?",
+    "password": "Pass2020",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "Hardbut99?",
+    "password": "Pass2020",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
