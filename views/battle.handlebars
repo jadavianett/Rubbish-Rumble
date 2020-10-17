@@ -1,5 +1,19 @@
 <main class="container">
     <div id="home-page" class="row">
+        <!-- Results Modal -->
+        <div id="resultsModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                {{!-- <span class="close-modal">&times;</span> --}}
+                <p id="results-text">Results Text</p>
+                <button id="continue-button" style="display: none;">Back to your animals</button>
+                <div class="row level-up-buttons" style="display: none;">
+                    <button id="increase-atk-btn">Attack +5</button>
+                    <button id="increase-hp-btn">HP +10</button>
+                    <button id="increase-def-btn">Defense +5</button>
+                </div>
+            </div>
+        </div>
         <h1>Fight!</h1>
         <h6 id="battle-header">
             Think strategically and choose your action!

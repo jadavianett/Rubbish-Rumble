@@ -1,5 +1,7 @@
+// const { default: ModelManager } = require("sequelize/types/lib/model-manager");
+
 $(document).ready(function () {
-    
+
     // Character Var setup
     // ==============================================================================
     var playerCharacter;
@@ -36,6 +38,60 @@ $(document).ready(function () {
         });
     };
     
+    //  BUTTON SETUP
+    // ===============================================================================
+    // Sets up the button to go back to the character viewer
+    $("#continue-button").click(function () {
+        window.location.replace("/allCharacters");
+    });
+
+    // Sets up the increase-attribute buttons at the end of the fight
+    $("#increase-atk-btn").on("click", function() {
+        playerCharacter.atk = playerCharacter.atk + 5;
+        updateChar(playerCharacter);
+        // Changes the results text to reflect the new stat
+        $("#results-text").text(`${playerCharacter.character_name} increased their attack by 5!`);
+        // removes the buttons after an option has been clicked, and presents the continue button
+        $(".level-up-buttons").attr("style", "display: none");
+        $("#continue-button").attr("style", "display: block");
+    });
+
+    $("#increase-hp-btn").on("click", function() {
+        playerCharacter.hp = playerCharacter.hp + 10;
+        updateChar(playerCharacter);
+        // Changes the results text to reflect the new stat
+        $("#results-text").text(`${playerCharacter.character_name} increased their HP by 10!`);
+        // removes the buttons after an option has been clicked, and presents the continue button
+        $(".level-up-buttons").attr("style", "display: none");
+        $("#continue-button").attr("style", "display: block");
+    });
+
+    $("#increase-def-btn").on("click", function() {
+        playerCharacter.def = playerCharacter.def + 5;
+        updateChar(playerCharacter);
+        // Changes the results text to reflect the new stat
+        $("#results-text").text(`${playerCharacter.character_name} increased their defense by 5!`);
+        // removes the buttons after an option has been clicked, and presents the continue button
+        $(".level-up-buttons").attr("style", "display: none");
+        $("#continue-button").attr("style", "display: block");
+    });
+
+    // Update function for after a win
+    function updateChar(character) {
+        $.ajax("/api/character/" + character.id, {
+            type: "PUT",
+            data: {
+                character_name: character.character_name,
+                hp: character.hp,
+                atk: character.atk,
+                def: character.def,
+                wins: character.wins,
+                losses: character.losses
+            }
+        }).then(function() {
+            console.log("updated Character");
+        });
+    };
 
     // Causes turns of battle to repeat until one combatant loses
     // ==============================================================================
@@ -197,11 +253,55 @@ $(document).ready(function () {
                 //$("#playerHPbar").text(`${playerCharacter.currentHP} / ${playerCharacter.hp}`);
                 $("#compHPbar").width(((enemyCharacter.currentHP / enemyCharacter.hp) * 100) + "%");
                 //$("#compHPbar").text(`${enemyCharacter.currentHP} / ${enemyCharacter.hp}`);
+
+                // Checks to see whether a combatant has been knocked out
+                if (playerCharacter.currentHP < 0 && enemyCharacter.currentHP < 0) {
+                    return battleDraw();
+                } else if (playerCharacter.currentHP < 0) {
+                    return battleLose();
+                } else if (enemyCharacter.currentHP < 0) {
+                    return battleWin();
+                };
+
             });
     
         };
     }
 
-    // $("#battle-header").text("The Battle is over!");
+    // Outcome of a draw
+    function battleDraw() {
+        // Remove the action buttons to prevent anymore actions being taken
+        $("#actionBtns").attr("style", "display: none");
+        // Show the modal and edit its text
+        $("#resultsModal").attr("style", "display: block");
+        $("#results-text").text("Its a double KO! Better luck next time.");
+        $("#continue-button").attr("style", "display: block");
+
+    };
+
+    // Outcome of a loss
+    function battleLose() {
+        // Remove the action buttons to prevent anymore actions being taken
+        $("#actionBtns").attr("style", "display: none");
+        // Show the modal and edit its text
+        $("#resultsModal").attr("style", "display: block");
+        $("#results-text").text(`${playerCharacter.character_name} was knocked out! Better luck next time...`);
+        $("#continue-button").attr("style", "display: block");
+    };
+
+    // Outcome of a win
+    function battleWin() {
+        // Remove the action buttons to prevent anymore actions being taken
+        $("#actionBtns").attr("style", "display: none");
+        // Remove the continue button until AFTER a bonus has been chosen
+        $("#continue-button").attr("style", "display: none");
+        // Show the modal and edit its text
+        $("#resultsModal").attr("style", "display: block");
+        $("#results-text").text(`${playerCharacter.character_name} won! To the victor go the spoils!`);
+
+        // Show the buttons to increase attributes
+        $(".level-up-buttons").attr("style", "display: block");
+
+    };
 
 });
