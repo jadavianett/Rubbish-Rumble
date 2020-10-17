@@ -4,14 +4,14 @@
     <br><br>
     <h1>YOUR CHARACTERS</h1>
     <br><br>
+    {{#each this}}
+    {{character_name}}
+    {{/each}}
 
     <h6>Click one of your characters
         <br>
         Then click GO TO BATTLE to Fight!</h6>
 
-    {{#each characterList}}
-    {{> characters/characters-block}}
-    {{/each}}
 
 
 
@@ -33,7 +33,7 @@
                     <p>Here is some more information about this character.</p>
                 </div>
             </div>
-            {{#each Character}}
+            {{#each characters}}
             <div class="card carousel-item">
                 <div class="card-image waves-effect waves-block waves-light">
                     <img class="activator" src="{{avatar_image}}">
