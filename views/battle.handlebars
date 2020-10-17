@@ -1,13 +1,27 @@
 <main class="container">
     <div id="home-page" class="row">
+        <!-- Results Modal -->
+        <div id="resultsModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                {{!-- <span class="close-modal">&times;</span> --}}
+                <p id="results-text">Results Text</p>
+                <button id="continue-button" style="display: none;">Back to your animals</button>
+                <div class="row level-up-buttons" style="display: none;">
+                    <button id="increase-atk-btn">Attack +5</button>
+                    <button id="increase-hp-btn">HP +10</button>
+                    <button id="increase-def-btn">Defense +5</button>
+                </div>
+            </div>
+        </div>
         <h1>Fight!</h1>
-        <h6>
+        <h6 id="battle-header">
             Think strategically and choose your action!
         </h6>
         <div class="row"></div>
         <div class="row">
             <div class="col s6 characterCol">
-                <h5>Player Character's Name here</h5>
+                <h5 id="player-character-name">Player Character's Name here</h5>
                 <div id="playerHPbar"></div>
                 <img src="./assets/images/trash-raccoon.png" id="userCharacter">
                 <div class="row actionBtns">
@@ -18,9 +32,11 @@
                 </div>
             </div>
             <div class="col s6 characterCol">
-                <h5>Comp Character's Name here</h5>
+                <h5 id="enemy-character-name">Comp Character's Name here</h5>
                 <div id="compHPbar"></div><img src="./assets/images/trash-rat.png" id="compCharacter">
             </div>
         </div>
     </div>
 </main>
+
+<script type="text/javascript" src="./assets/js/battlepage.js"></script>
