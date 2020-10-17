@@ -8,10 +8,17 @@ $(document).ready(function () {
     let newCharacter = {
       character_name: $("#character-name-form [name=name]").val().trim(),
       advantage: $("#advantage-chosen [name=advantage]:checked").val(),
+      avatar_image: avatarImage[0],
+      wins: 0,
+      losses: 0,
+      hp: 100,
+      atk: 15,
+      def: 10,
+      user_id: sessionStorage.getItem("currentUser"),
     };
     // runs create character function
     console.log(newCharacter);
-    createNewCharacter();
+    createNewCharacter(newCharacter);
     //save character information
     // re route to the view all characters page
     window.location.replace("/allCharacters");
@@ -38,6 +45,9 @@ $(document).ready(function () {
       avatar_image: avatarImage[0],
       wins: 0,
       losses: 0,
+      hp: 100,
+      atk: 15,
+      def: 10,
       user_id: sessionStorage.getItem("currentUser"),
     };
     // runs create new character
@@ -57,5 +67,6 @@ function createNewCharacter(newCharacterObj) {
   }).then(function (response) {
     // Change to character creator
     console.log("Added new Character: " + response);
+    console.log(newCharacterObj);
   });
 }

@@ -5,7 +5,7 @@ const { currentUser } = require("./userController.js");
 
 // Views Routes
 // ======================================================
-
+let matchedCharacters;
 // API ROUTES
 // ======================================================
 
@@ -25,6 +25,7 @@ router.post("/api/character", function (req, res) {
   })
     .then(function (newCharacter) {
       // Returns the new character as json
+      matchedCharacters = newCharacter;
       res.json(newCharacter);
     })
     .catch((err) => {
@@ -38,42 +39,96 @@ router.post("/api/character", function (req, res) {
 });
 
 // gets all characters belonging to a certain user id for viewing
-router.get("/api/characterByUser/:id", function(req,res) {
-    db.Character.findAll({
-        where: {
-            user_id: req.params.id
-        }
-    }).then(matchedCharacters => {
-        console.log("Found your characters")
-        res.json(matchedCharacters);
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json({
-            error: true,
-            data: null,
-            message: "Unable to find characters",
-        });
+router.get("/api/characterByUser/:user_id", function (req, res) {
+  db.Character.findAll({
+    where: {
+      user_id: req.params.user_id,
+    },
+  })
+    .then((result) => {
+      console.log("Found your characters");
+      console.log(result);
+      res.json(result);
+
+      let characterNames = result.map(function (value) {
+        return value.character_name;
+      });
+      console.log(characterNames);
+      // res.render("allCharacters", {
+      //   characterNames: characterNames,
+      // });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: true,
+        data: null,
+        message: "Unable to find characters",
+      });
     });
 });
 
+// router.get("/api/characterByUser/:user_id", function (req, res) {
+//   db.Character.findAll({
+//     where: {
+//       user_id: req.params.user_id,
+//     },
+//   })
+//     .then((result) => {
+//       console.log("Found your characters");
+//       console.log(result);
+//       res.json(result);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json({
+//         error: true,
+//         data: null,
+//         message: "Unable to find characters",
+//       });
+//     });
+// });
+
 // gets a character with a certain id
-router.get("/api/character/:id", function(req,res) {
-    db.Character.findOne({
-        where: {
-            id: req.params.id
-        }
-    }).then(matchedCharacter => {
-        console.log("Found your character")
-        res.json(matchedCharacter);
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json({
-            error: true,
-            data: null,
-            message: "Unable to find character",
-        });
+router.get("/api/character/:id", function (req, res) {
+  db.Character.findOne({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((matchedCharacter) => {
+      console.log("Found your character");
+      res.json(matchedCharacter);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: true,
+        data: null,
+        message: "Unable to find character",
+      });
     });
 });
+
+// gets all characters belonging to a certain user id for viewing
+// router.get("/api/character/:id", function (req, res) {
+//   db.Character.findOne({
+//     where: {
+//       id: req.params.id,
+//     },
+//   }).then((matchedCharacter) => {
+//     console.log("Found your character");
+//     console.log(matchedCharacter);
+//     res.json(matchedCharacter);
+//   });
+// .catch((err) => {
+//   console.log(err);
+//   res.status(500).json({
+//     error: true,
+//     data: null,
+//     message: "Unable to find character",
+//   });
+// });
 
 // deletes a chracter that has a certain id
 router.delete("/api/character/:id", function (req, res) {
@@ -115,4 +170,8 @@ router.put("/api/character/:id", function (req, res) {
   });
 });
 
-module.exports = router;
+// module.exports = router;
+module.exports = {
+  router: router,
+  matchedCharacters: matchedCharacters,
+};

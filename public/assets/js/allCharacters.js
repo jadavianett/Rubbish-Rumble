@@ -19,4 +19,17 @@ $(document).ready(function () {
   $("#selectFox").click(function () {
     alert("You selected Fox");
   });
+
+  function usersCharacters() {
+    $.ajax("/api/characterByUser/1", {
+      type: "GET",
+    }).then(function (response) {
+      console.log(response);
+      let characterNames = response.map(function (value) {
+        return value.character_name;
+      });
+      console.log(characterNames);
+    });
+  }
+  usersCharacters();
 });
