@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Manzanita19",
+    "password": "Pass2020",
     "database": "choose_your_fighter_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
