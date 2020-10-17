@@ -98,7 +98,7 @@ router.delete("/api/character/:id", function (req, res) {
 
 // updates a character with a certain id
 router.put("/api/character/:id", function (req, res) {
-  db.Character.findOner({
+  db.Character.findOne({
     where: {
       id: req.params.id,
     },
