@@ -19,4 +19,17 @@ $(document).ready(function () {
   $("#selectFox").click(function () {
     alert("You selected Fox");
   });
+
+  function usersCharacters(characterList) {
+    $.ajax("/api/characterByUser/1", {
+      type: "GET",
+      data: characterList,
+    }).then(function (response) {
+      console.log(response);
+      // Change to character creator
+      console.log("generated characters for user id" + response);
+      console.log(characterList);
+    });
+  }
+  usersCharacters();
 });
