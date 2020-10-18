@@ -11,9 +11,9 @@ $(document).ready(function () {
       avatar_image: avatarImage[0],
       wins: 0,
       losses: 0,
-      hp: 100,
-      atk: 15,
-      def: 10,
+      hp: $("#advantage-chosen [name=advantage]:checked").attr("hpStat"),
+      atk: $("#advantage-chosen [name=advantage]:checked").attr("atkStat"),
+      def: $("#advantage-chosen [name=advantage]:checked").attr("defStat"),
       user_id: sessionStorage.getItem("currentUser"),
     };
   
