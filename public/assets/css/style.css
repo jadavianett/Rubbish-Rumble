@@ -120,7 +120,7 @@ label {
   background-color: #00000069;
   width: 400px;
 }
-#character_name {
+#character_name, #first_name {
   color: white;
   text-align: center;
   font-size: 15pt;
