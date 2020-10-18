@@ -16,12 +16,20 @@ $(document).ready(function () {
       def: 10,
       user_id: sessionStorage.getItem("currentUser"),
     };
+  
+    //if the form is left empty, a modal comes appears to remind the user of their options
+    if ((newCharacter.character_name === "") || (newCharacter.advantage === null) || (newCharacter.avatar_image === "")){
+      $("#create-character-modal").attr("style", "display: block");
+    } else {
+      createNewCharacter(newCharacter);
+      window.location.replace("/allCharacters");
+    }
     // runs create character function
     console.log(newCharacter);
-    createNewCharacter(newCharacter);
+    
     //save character information
     // re route to the view all characters page
-    window.location.replace("/allCharacters");
+    
   });
 
   // click listener for the image carousel
@@ -33,6 +41,12 @@ $(document).ready(function () {
       console.log(avatarImage[0]);
     console.log($(this).attr("data-src"));
   });
+  $("#close-modal").click(function (event) {
+    $("#create-character-modal").attr("style", "display: none")
+  }
+  )
+
+
 
   // click listener for creating new characters
   // this also will add thar variable so it can push to the database
