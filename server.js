@@ -45,23 +45,27 @@ app.use(charactersRouter);
 //   res.render("createCharacter", {currentUser});
 // });
 
-function usersCharacters(userId) {
-  $.ajax(`/api/characterByUser/${userId}`, {
-    type: "GET",
-    // data: characterList,
-  }).then(function (response) {
-    console.log("characters:", response);
+// function usersCharacters(userId) {
+//   $.ajax(`/api/characterByUser/${userId}`, {
+//     type: "GET",
+//     // data: characterList,
+//   }).then(function (response) {
+//     console.log("characters:", response);
 
-    return response;
+//     return response;
 
-    // Change to character creator
-    // console.log("generated characters for user id" + response);
-    //console.log(characterList);
-  });
-}
+//     // Change to character creator
+//     // console.log("generated characters for user id" + response);
+//     //console.log(characterList);
+//   });
+// }
 
 app.get("/allCharacters", (req, res) => {
   res.render("allCharacters", matchedCharacters);
+});
+
+app.get("/createCharacter", (req, res) => {
+  res.render("createCharacter");
 });
 
 app.get("/characterByUser", (req, res) => {
