@@ -58,7 +58,7 @@ form {
 
 .card-content {
   color: white !important;
-  text-shadow: 5px 5px 5px #000000;
+  /* text-shadow: 5px 5px 5px #000000; */
 }
 label {
   color: white !important;
