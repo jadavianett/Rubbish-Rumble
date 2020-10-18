@@ -43,12 +43,14 @@ form {
   color: black;
 }
 #view-all-characters {
-  margin-right: 425px;
+  margin: auto;
   top: -50px;
-  /* background-color: blueviolet; */
+  margin-left: 425px;
 }
-#add-new-character {
-  top: -50px;
+
+#advantage-text {
+  text-align: center;
+  color:white
 }
 .carousel .carousel-item {
   height: 240px;
