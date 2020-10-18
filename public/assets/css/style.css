@@ -160,3 +160,12 @@ label {
   text-decoration: none;
   cursor: pointer;
 }
+
+.chooseCharacterGrid {
+  width: 15%;
+  border: 2px;
+  border: #0000006f solid;
+  display: inline-grid;
+  padding: 5px;
+  margin: 5px;
+}
