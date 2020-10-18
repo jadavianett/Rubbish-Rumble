@@ -14,7 +14,7 @@ $(document).ready(function () {
     var enemyRandomizer;
 
     // Sets the character variables equal to the appropriate objects from an api call
-    $.ajax("/api/character/5", {
+    $.ajax("/api/character/" + sessionStorage.getItem("battleCharacterId"), {
         type: "GET",
     }).then(function (response) {
         console.log(response)
@@ -281,6 +281,8 @@ $(document).ready(function () {
 
     // Outcome of a loss
     function battleLose() {
+        playerCharacter.losses = playerCharacter.losses + 1;
+        updateChar(playerCharacter);
         // Remove the action buttons to prevent anymore actions being taken
         $("#actionBtns").attr("style", "display: none");
         // Show the modal and edit its text
@@ -292,6 +294,7 @@ $(document).ready(function () {
     // Outcome of a win
     function battleWin() {
         // Remove the action buttons to prevent anymore actions being taken
+        playerCharacter.wins = playerCharacter.wins + 1;
         $("#actionBtns").attr("style", "display: none");
         // Remove the continue button until AFTER a bonus has been chosen
         $("#continue-button").attr("style", "display: none");

@@ -24,6 +24,7 @@ $(document).ready(function () {
       var hp = response[i].hp;
       var atk = response[i].atk;
       var def = response[i].def;
+      var id = response[i].id;
 
       console.log("this is the ajax" + response);
 
@@ -38,7 +39,7 @@ $(document).ready(function () {
       <span class="card-title activator grey-text text-darken-4">` +
         name +
         `<i class="material-icons right">more_vert</i></span>
-      <p> <a class="waves-effect waves-light red btn-large" id="go-battle">BATTLE</a>
+      <p> <a class="waves-effect waves-light red btn-large" id="go-battle" data="` + id + `">BATTLE</a>
       <a class="waves-effect waves-light red btn-large" id="delete-character">DELETE</a></p>
     </div>
     <div class="card-reveal">
@@ -63,11 +64,19 @@ $(document).ready(function () {
 
       $("#characterBoard").append(characterSelector);
       console.log(characterSelector);
-
-      $("#delete-character").click(function () {
-        console.log("you want to delete this character")
-      })
     }
+
+    $("#go-battle").click(function (event) {
+      console.log("going to battle");
+      sessionStorage.setItem("battleCharacterId", $(event.target).attr("data"));
+      console.log(sessionStorage.getItem("battleCharacterId"));
+      window.location.replace("/battle");
+    });
+
+    $("#delete-character").click(function () {
+      console.log("you want to delete this character")
+    });
+
   });
 });
 
