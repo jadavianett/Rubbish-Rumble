@@ -2,34 +2,78 @@ $(document).ready(function () {
   $("#go-battle").click(function () {
     window.location.replace("/battle");
   });
+
+  $("#createCharacter").click(function () {
+    window.location.replace("/createCharacter");
+  });
+
   $(".carousel").carousel();
 
-  $("#selectRacoon").click(function () {
-    alert("You selected Raccoon");
-  });
-  $("#selectPigeon").click(function () {
-    alert("You selected Pigeon");
-  });
-  $("#selectPossom").click(function () {
-    alert("You selected Possom");
-  });
-  $("#selectRat").click(function () {
-    alert("You selected Rat");
-  });
-  $("#selectFox").click(function () {
-    alert("You selected Fox");
-  });
+  let userId = sessionStorage.getItem("currentUser");
 
-  function usersCharacters() {
-    $.ajax("/api/characterByUser/1", {
-      type: "GET",
-    }).then(function (response) {
-      console.log(response);
-      let characterNames = response.map(function (value) {
-        return value.character_name;
-      });
-      console.log(characterNames);
-    });
-  }
-  usersCharacters();
+  $.ajax("/api/characterByUser/" + userId, {
+    type: "GET",
+  }).then(function (response) {
+    var len = response.length;
+    for (var i = 0; i < len; i++) {
+      var name = response[i].character_name;
+      var advantage = response[i].advantage;
+      var avatar = response[i].avatar_image;
+      var wins = response[i].wins;
+      var losses = response[i].losses;
+      var hp = response[i].hp;
+      var atk = response[i].atk;
+      var def = response[i].def;
+
+      console.log("this is the ajax" + response);
+
+      var characterSelector =
+        `<div class="card chooseCharacterGrid">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="` +
+        avatar +
+        `">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">` +
+        name +
+        `<i class="material-icons right">more_vert</i></span>
+      <p> <a class="waves-effect waves-light red btn-large" id="go-battle">BATTLE</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Stats<i class="material-icons right">close</i></span>
+      <p> Hit Points: ` +
+        hp +
+        `</p>
+      <p> Attack: ` +
+        atk +
+        `</p>
+      <p> Defense: ` +
+        def +
+        `</p>
+      <p> Wins: ` +
+        wins +
+        `</p>
+      <p> Losses: ` +
+        losses +
+        `</p>
+    </div>
+  </div>`;
+
+      $("#characterBoard").append(characterSelector);
+      console.log(characterSelector);
+    }
+  });
 });
+
+// Using this as an example in the code.
+
+// $.ajax("/api/character/5", {
+//   type: "GET",
+// }).then(function (response) {
+//   console.log(response);
+//   playerCharacter = response;
+//   playerCharacter.currentHP = playerCharacter.hp;
+//   $("#player-character-name").text(playerCharacter.character_name);
+//   $("#userCharacter").attr("src", playerCharacter.avatar_image);
+//   callEnemy();
