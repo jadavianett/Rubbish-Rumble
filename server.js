@@ -14,7 +14,13 @@ const {
 const {
   allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
+var mysql = require("mysql");
+var connection;
 const PORT = process.env.PORT || 8080;
+
+app = express();
+
+app.set("port", PORT);
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
