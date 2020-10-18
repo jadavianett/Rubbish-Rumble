@@ -4,146 +4,43 @@
     <br><br>
     <h1>YOUR CHARACTERS</h1>
     <br><br>
-    {{#each this}}
-    {{character_name}}
-    {{/each}}
+
+    {{userCharacters.character_name}}
 
     <h6>Click one of your characters
         <br>
-        Then click GO TO BATTLE to Fight!</h6>
-
-
-
-
-    <div class="row">
-        <div class="carousel">
-
-            <div class="card carousel-item">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="./assets/images/trash-pigeon.png">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Pigeon<i
-                            class="material-icons right">more_vert</i></span>
-                    <p><a class="center-align" id="selectPigeon" href="#">SELECT</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Character Stats<i
-                            class="material-icons right">close</i></span>
-                    <p>Here is some more information about this character.</p>
-                </div>
-            </div>
-            {{#each characters}}
-            <div class="card carousel-item">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="{{avatar_image}}">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">{{dataValues.character_name}}<i
-                            class="material-icons right">more_vert</i></span>
-                    <p><a class="center-align" id="select" href="#">SELECT</a></p>
-                </div>
-                {{!-- <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Wins: {{Character.dataValues.wins}} Losses:
-                        {{characterList.Character.dataValues.losses}}<i class="material-icons right">close</i></span>
-                    <p>Hit Points: {{hp}}</p>
-                    <p>Strength: {{dataValues.atk}}</p>
-                    <p>Defense: {{Character.dataValues.def}}</p>
-                </div> --}}
-            </div>
-            {{/each}}
-
-
-            {{!-- <div class="card carousel-item">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="./assets/images/trash-raccoon.png">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator">Racoon<i
-                            class="material-icons right">more_vert</i></span>
-                    <p><a class="center-align" id="selectRacoon" href="#">SELECT</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Character Stats<i
-                            class="material-icons right">close</i></span>
-                    <p>Here is some more information about this character.</p>
-                </div>
-            </div>
-
-            <div class="card carousel-item">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="./assets/images/trash-pigeon.png">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator">Pigeon<i
-                            class="material-icons right">more_vert</i></span>
-                    <p><a class="center-align" id="selectPigeon" href="#">SELECT</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Character Stats<i
-                            class="material-icons right">close</i></span>
-                    <p>Here is some more information about this character.</p>
-                </div>
-            </div>
-
-            <div class="card carousel-item">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="./assets/images/trash-possom.png">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator">Possom<i
-                            class="material-icons right">more_vert</i></span>
-                    <p><a class="center-align" id="selectPossom" href="#">SELECT</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Character Stats<i
-                            class="material-icons right">close</i></span>
-                    <p>Here is some more information about this character.</p>
-                </div>
-            </div>
-
-            <div class="card carousel-item">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="./assets/images/trash-rat.png">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator">Rat<i
-                            class="material-icons right">more_vert</i></span>
-                    <p><a class="center-align" id="selectRat" href="#">SELECT</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Character Stats<i
-                            class="material-icons right">close</i></span>
-                    <p>Here is some more information about this character.</p>
-                </div>
-            </div>
-
-            <div class="card carousel-item">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="./assets/images/trash-fox.png">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator">Fox<i
-                            class="material-icons right">more_vert</i></span>
-                    <p><a class="center-align" id="selectFox" href="#">SELECT</a></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Character Stats<i
-                            class="material-icons right">close</i></span>
-                    <p>Here is some more information about this character.</p>
-                </div>
-            </div> --}}
-        </div>
-    </div>
-
-    <br>
-
+        Then click GO TO BATTLE to Fight!
+        <br>
+        or create a new character!</h6>
     <div class="row">
         <div class="center-align">
-            <a class="waves-effect waves-light red btn-large" id="go-battle">GO TO BATTLE</a>
+            <a class="waves-effect waves-light red btn-large" id="createCharacter">Create New Character</a>
         </div>
     </div>
+    <div id="characterBoard" class="col s12 m10 l6"></div>
+
+    {{!-- <div class="row">
+        <div class="carousel">
+            <div id="characterCarousel"></div>
+            <div class="card carousel-item">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="./assets/images/trash-pigeon.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4"><i
+                            class="material-icons right">more_vert</i></span>
+                    <p><a class="center-align" id="selectPigeon" href="#">SELECT</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Character Stats<i
+                            class="material-icons right">close</i></span>
+                    <p>Here is some more information about this character.</p>
+                </div>
+            </div>
+        </div>
+    </div> --}}
 
 </main>
 
 <script type="text/javascript" src="./assets/js/allCharacters.js"></script>
+<script type="text/javascript" src="./assets/js/index.js"></script>
