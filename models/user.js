@@ -18,6 +18,13 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
+  //   User.associate = function (models) {
+  //     User.belongsToMany(models.Character, {
+  //       through: "UserCharacters",
+  //       foreignKey: "character_id",
+  //     });
+  //   };
+
   User.associate = function (models) {
     User.belongsToMany(models.Character, {
       through: "UserCharacters",
