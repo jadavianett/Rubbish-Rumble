@@ -18,8 +18,6 @@ var mysql = require("mysql");
 var connection;
 const PORT = process.env.PORT || 8080;
 
-app = express();
-
 app.set("port", PORT);
 
 app.use(express.static("public"));
@@ -111,8 +109,19 @@ app.get("/api/config", (req, res) => {
 // });
 
 // db.sequelize.sync({ force: true }).then(function () {
+
+// db.sequelize.sync({}).then(function () {
+//   app.listen(PORT, () => {
+//     console.log(`Server is running on http://localhost:${PORT}`);
+//   });
+// });
+
 db.sequelize.sync({}).then(function () {
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  app.listen(process.env.PORT || 8080, function () {
+    console.log(
+      "Express server listening on port %d in %s mode",
+      this.address().port,
+      app.settings.env
+    );
   });
 });
