@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS users (
 	id INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (id),
     user_name VARCHAR(255)
+    character
 );
 
 CREATE TABLE IF NOT EXISTS characters (
