@@ -14,7 +14,7 @@ $(document).ready(function () {
     var enemyRandomizer;
 
     // Sets the character variables equal to the appropriate objects from an api call
-    $.ajax("/api/character/5", {
+    $.ajax("/api/character/" + sessionStorage.getItem("battleCharacterId"), {
         type: "GET",
     }).then(function (response) {
         console.log(response)
