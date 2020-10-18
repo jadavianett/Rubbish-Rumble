@@ -10,7 +10,7 @@ function getUserByName(newUser) {
       // change to character creator
       sessionStorage.setItem("currentUser", response.id);
       console.log("Found User: " + response);
-      window.location.replace("/createCharacter");
+      window.location.replace("/AllCharacters");
     }
   });
 }
@@ -24,7 +24,7 @@ function createNewUser(userObj) {
     // Change to character creator
 
     sessionStorage.setItem("currentUser", response.id);
-    window.location.replace("/createCharacter");
+    window.location.replace("/AllCharacters");
     console.log("Added new User: " + response);
     console.log(response);
   });
