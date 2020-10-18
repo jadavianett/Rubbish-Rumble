@@ -38,7 +38,8 @@ $(document).ready(function () {
       <span class="card-title activator grey-text text-darken-4">` +
         name +
         `<i class="material-icons right">more_vert</i></span>
-      <p> <a class="waves-effect waves-light red btn-large" id="go-battle">BATTLE</a></p>
+      <p> <a class="waves-effect waves-light red btn-large" id="go-battle">BATTLE</a>
+      <a class="waves-effect waves-light red btn-large" id="delete-character">DELETE</a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Stats<i class="material-icons right">close</i></span>
@@ -62,6 +63,10 @@ $(document).ready(function () {
 
       $("#characterBoard").append(characterSelector);
       console.log(characterSelector);
+
+      $("#delete-character").click(function () {
+        console.log("you want to delete this character")
+      })
     }
   });
 });
