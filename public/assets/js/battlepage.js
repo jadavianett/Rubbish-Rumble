@@ -28,6 +28,17 @@ $(document).ready(function () {
     function createEnemy() {
         $.ajax("/api/character", {
             type: "POST",
+            data: {
+                character_name: "Enemy Fox!",
+                advantage: "defense",
+                avatar_image: "./assets/images/trash-fox.png",
+                wins: 0,
+                losses: 0,
+                hp: 100 + (playerCharacter.wins * 10),
+                atk: 15 + (playerCharacter.wins),
+                def: 18 + (playerCharacter.wins * 2),
+                user_id: 0,
+            },
         }).then(function (response) {
             console.log(response)
             enemyCharacter = response;
