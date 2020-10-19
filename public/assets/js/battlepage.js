@@ -22,12 +22,12 @@ $(document).ready(function () {
         playerCharacter.currentHP = playerCharacter.hp;
         $("#player-character-name").text(playerCharacter.character_name);
         $("#userCharacter").attr("src", playerCharacter.avatar_image);
-        callEnemy();
+        createEnemy();
     });
 
-    function callEnemy() {
-        $.ajax("/api/character/6", {
-            type: "GET",
+    function createEnemy() {
+        $.ajax("/api/character", {
+            type: "POST",
         }).then(function (response) {
             console.log(response)
             enemyCharacter = response;
