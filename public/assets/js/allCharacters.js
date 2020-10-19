@@ -39,7 +39,7 @@ $(document).ready(function () {
       <span class="card-title activator grey-text text-darken-4">` +
         name +
         `<i class="material-icons right">more_vert</i></span>
-      <p> <a class="waves-effect waves-light red btn-large go-battle" data="` +
+      <p> <a class="waves-effect waves-light blue lighten-3 btn-large go-battle" data="` +
         id +
         `">BATTLE</a>
       <a class="waves-effect waves-light red btn-large delete-character"onclick="event.cancelBubble = true;">DELETE</a></p>
