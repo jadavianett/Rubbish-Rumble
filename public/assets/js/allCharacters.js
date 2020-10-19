@@ -42,7 +42,9 @@ $(document).ready(function () {
       <p> <a class="waves-effect waves-light red btn-large go-battle" data="` +
         id +
         `">BATTLE</a>
-      <a class="waves-effect waves-light red btn-large delete-character"onclick="event.cancelBubble = true;">DELETE</a></p>
+      <a class="waves-effect waves-light red btn-large delete-character"onclick="event.cancelBubble = true;" data="`+ 
+      id +
+      `">DELETE</a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Stats<i class="material-icons right">close</i></span>
@@ -66,7 +68,7 @@ $(document).ready(function () {
 
       $("#characterBoard").append(characterSelector);
       console.log(characterSelector);
-    }
+    };
 
     $(".go-battle").click(function (event) {
       console.log("going to battle");
@@ -79,7 +81,7 @@ $(document).ready(function () {
       event.stopPropagation();
 
       console.log("you want to delete this character");
-      $.ajax("/api/character/" + id, {
+      $.ajax(("/api/character/" + $(event.target).attr("data")), {
         type: "DELETE",
       })
         .then(function (response) {
