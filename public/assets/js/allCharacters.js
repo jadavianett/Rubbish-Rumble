@@ -39,8 +39,13 @@ $(document).ready(function () {
       <span class="card-title activator grey-text text-darken-4">` +
         name +
         `<i class="material-icons right">more_vert</i></span>
+<<<<<<< HEAD
+      <p> <a class="waves-effect waves-light blue lighten-3 btn-large" id="go-battle" data="` + id + `">BATTLE</a>
+      <a class="waves-effect waves-light red btn-large" id="delete-character">DELETE</a></p>
+=======
       <p> <a class="waves-effect waves-light red btn-large" id="go-battle" data="` + id + `">BATTLE</a>
       <a class="waves-effect waves-light red btn-large delete-character">DELETE</a></p>
+>>>>>>> 1e19fd4159097af9edafb433fd446f4d45447eaa
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Stats<i class="material-icons right">close</i></span>
