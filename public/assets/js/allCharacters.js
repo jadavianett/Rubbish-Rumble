@@ -39,8 +39,10 @@ $(document).ready(function () {
       <span class="card-title activator grey-text text-darken-4">` +
         name +
         `<i class="material-icons right">more_vert</i></span>
-      <p> <a class="waves-effect waves-light red btn-large" id="go-battle" data="` + id + `">BATTLE</a>
-      <a class="waves-effect waves-light red btn-large delete-character">DELETE</a></p>
+      <p> <a class="waves-effect waves-light red btn-large go-battle" data="` +
+        id +
+        `">BATTLE</a>
+      <a class="waves-effect waves-light red btn-large delete-character"onclick="event.cancelBubble = true;">DELETE</a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Stats<i class="material-icons right">close</i></span>
@@ -66,7 +68,7 @@ $(document).ready(function () {
       console.log(characterSelector);
     }
 
-    $("#go-battle").click(function (event) {
+    $(".go-battle").click(function (event) {
       console.log("going to battle");
       sessionStorage.setItem("battleCharacterId", $(event.target).attr("data"));
       console.log(sessionStorage.getItem("battleCharacterId"));
@@ -75,18 +77,19 @@ $(document).ready(function () {
 
     $(".delete-character").click(function (event) {
       event.stopPropagation();
-      console.log("you want to delete this character")
+
+      console.log("you want to delete this character");
       $.ajax("/api/character/" + id, {
         type: "DELETE",
-      }).then(function (response) {
-        // Reload the page to get the updated list of characters
-      location.reload();
-      }).catch((err) => {
-        console.log(err);
       })
+        .then(function (response) {
+          // Reload the page to get the updated list of characters
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
-
-
   });
 });
 
