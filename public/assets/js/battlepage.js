@@ -22,12 +22,23 @@ $(document).ready(function () {
         playerCharacter.currentHP = playerCharacter.hp;
         $("#player-character-name").text(playerCharacter.character_name);
         $("#userCharacter").attr("src", playerCharacter.avatar_image);
-        callEnemy();
+        createEnemy();
     });
 
-    function callEnemy() {
-        $.ajax("/api/character/6", {
-            type: "GET",
+    function createEnemy() {
+        $.ajax("/api/character", {
+            type: "POST",
+            data: {
+                character_name: "Enemy Fox!",
+                advantage: "defense",
+                avatar_image: "./assets/images/trash-fox.png",
+                wins: 0,
+                losses: 0,
+                hp: 100 + (playerCharacter.wins * 10),
+                atk: 15 + (playerCharacter.wins),
+                def: 18 + (playerCharacter.wins * 2),
+                user_id: 0,
+            },
         }).then(function (response) {
             console.log(response)
             enemyCharacter = response;
