@@ -30,6 +30,12 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+h5 {
+  font-family: "VT323", monospace;
+  color: white;
+}
+
 h6 {
   text-align: center;
   color: white;
@@ -42,6 +48,11 @@ form {
   display: flex;
   justify-content: center;
 }
+
+.enemy-character-name {
+  align-self: right;
+}
+
 #usernameInput {
   background-color: #0000006f;
   align-items: center;
@@ -58,7 +69,7 @@ form {
 
 #advantage-text {
   text-align: center;
-  color:white
+  color: white;
 }
 .carousel .carousel-item {
   height: 240px;
@@ -78,17 +89,25 @@ label {
   transform: scaleX(-1);
   filter: hue-rotate(180deg);
   margin: auto;
+  padding: 30px;
 }
 #userCharacter {
   margin: auto;
+  padding: 30px;
 }
 #compHPbar {
   background-color: red;
   height: 25px;
+  border: white solid;
+  border-radius: 2px;
+  margin: 15px;
 }
 #playerHPbar {
   background: green;
   height: 25px;
+  border: white solid;
+  border-radius: 2px;
+  margin: 15px;
 }
 .characterCol {
   display: grid;
@@ -98,27 +117,39 @@ label {
 }
 #attackBtn {
   background-color: red;
+  font-family: "VT323", monospace;
   width: 50%;
+  height: 40px;
   margin: 5px;
   color: white;
+  font-size: larger;
 }
 #defendBtn {
   background-color: blue;
+  font-family: "VT323", monospace;
   width: 50%;
+  height: 40px;
   margin: 5px;
   color: white;
+  font-size: larger;
 }
 #strikeBtn {
   background-color: purple;
+  font-family: "VT323", monospace;
   width: 50%;
+  height: 40px;
   margin: 5px;
   color: white;
+  font-size: larger;
 }
 #counterBtn {
   background-color: orangered;
+  font-family: "VT323", monospace;
   width: 50%;
+  height: 40px;
   margin: 5px;
   color: white;
+  font-size: larger;
 }
 #character-name-form {
   display: block;
@@ -127,7 +158,8 @@ label {
   background-color: #00000069;
   width: 400px;
 }
-#character_name, #first_name {
+#character_name,
+#first_name {
   color: white;
   text-align: center;
   font-size: 15pt;
@@ -180,6 +212,6 @@ label {
   margin: 5px;
 }
 
-#delete-character {
+.delete-character {
   margin-top: 10px;
 }
